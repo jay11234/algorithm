@@ -19,12 +19,16 @@ class Bicoloring:
                 queue.append(first_node)
             while len(queue) > 0:
                 current = queue.pop(0)
-                if current.is_not_colored():
-                    current.color == 1
-                    for x in incoming_list[current.node_id].adj_list:
-                        if x.is_not_colored:
-                            x.set_differently(current.color)
+                for x in incoming_list[current.node_id].adj_list:
+                    if x.is_not_colored():
+                        queue.append(x)
+                        x.color_differently(current.color)
+                    if x.is_colored():
+                        if current.color == x.color:
+                            print()
+                            return "NOT BICOLORABLE."
 
+        return "BICOLORABLE."
                     ## set the current color to black
                     ## set adjlist of vertices to different color
                     ## if neibors have the same == NONbiolocrable

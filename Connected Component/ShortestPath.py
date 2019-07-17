@@ -28,12 +28,14 @@ class ShortestPath:
 
 
         for i in range(1, group_number+1):
-            print(i, end=": ")
+            print(i, end=":")
             for xx in vertex_list:
-                if xx.group == i:
-                    print (xx.vertex_id, end=" ")
-            print ()
 
+                if xx.group == i:
+                    print(" ", end ="")
+                    print (xx.vertex_id, end="")
+            print ()
+        print("", end="\r")
 
 if __name__ == '__main__':
 

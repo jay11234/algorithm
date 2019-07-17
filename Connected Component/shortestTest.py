@@ -36,7 +36,7 @@ class ShortestPath:
             count = count + 1
             print(count, ": ", end="")
             for xx in one:
-                print(xx, end=" ")
+                print()
 
 
 
