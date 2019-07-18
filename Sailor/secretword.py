@@ -3,28 +3,39 @@ from vertex import Vertex
 import sys
 import enchant
 
+class Dictionary:
 
-def print_anagram(prefix, word):
+    def __init__(self):
+        self.dic = self.make_dic()
+
+
+    def make_dic(self):
+        dictionary =list()
+        with open('dictionary.txt') as dic:
+            for line in dic:
+                dictionary.append(line.split('\n')[0])
+        return dictionary
+
+    def get_dict(self):
+        return self.dic
+
+
+def print_anagram(prefix, word, dict):
     if len(word) == 1:
-        dict = enchant.Dict("en_US")
+        #dict = enchant.Dict("en_US")
         output = prefix+''.join(word)
-        if dict.check(output):
+        output.lower()
+
+        if output in dict:
             print(output)
 
-    else: ## 8 words              fdsafdsa+     r *8
+    else:
         for a in range(len(word)):
             new_pre = prefix + word[a]
             rest = word[:a]+word[a+1:]
-            print_anagram(new_pre, rest)
+            print_anagram(new_pre, rest, dict)
 
-    ## abcd
-    ## newpre= a
-    ## rest =bcd
-    ## rainb, ow
-    ## 8*8 .....8
-    ## ra+inbow
-    ## inbow
-    ## arinbo w
+
 class ShortestPath:
 
     @staticmethod
@@ -62,16 +73,13 @@ class ShortestPath:
                 word_list.append(alphabet[count-1])
             count = 0
 
-        ## print anagram
+        ## print
+
         word = ''.join(word_list)
         prefix =''
-        print_anagram(prefix, word)
+        dictionary = Dictionary()
 
-
-
-
-
-
+        print_anagram(prefix, word, dictionary.get_dict())
 
 
 if __name__ == '__main__':
