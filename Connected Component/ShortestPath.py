@@ -17,25 +17,60 @@ class ShortestPath:
                 group_number = group_number + 1
             while len(queue) > 0:
                 current = queue.pop(0)
+                #if current.is_undiscovered():
                 current.group = group_number
-                if current.is_undiscovered():
-                    vertex_list[current.vertex_id].set_discovered()
-                    for neighbor in vertex_list[current.vertex_id].adj_list:
-                        if neighbor.is_undiscovered:
-                            neighbor.set_discovered()
-                            queue.append(neighbor)
-                            neighbor.group = group_number
+                #vertex_list[current.vertex_id].set_discovered()
+                for neighbor in vertex_list[current.vertex_id].adj_list:
 
+                    if neighbor.is_undiscovered():
+                        neighbor.set_discovered()
+                        queue.append(neighbor)
+                        neighbor.group = group_number
+
+                            # 1 - 5 6
+                            # 2 - 3, 4,5
+
+    #
+    # group_number = 0
+    # queue = list()
+    # for xxx in range(0, len(vertex_list)):
+    #     read = vertex_list[xxx]
+    #     if read.status != 1:
+    #         queue = [vertex_list[xxx]]
+    #         group_number = group_number + 1
+    #     while len(queue) > 0:
+    #         current = queue.pop(0)
+    #         current.group = group_number
+    #         if current.is_undiscovered():
+    #             vertex_list[current.vertex_id].set_discovered()
+    #             for neighbor in vertex_list[current.vertex_id].adj_list:
+    #
+    #                 if neighbor.is_undiscovered():
+    #                     neighbor.set_discovered()
+    #                     queue.append(neighbor)
+    #                     neighbor.group = group_number
+    #                 else:
+    #             # 3 - 5,6,7
+    #             # 1 - 1 5 6
+    #             #
 
         for i in range(1, group_number+1):
-            print(i, end=":")
+            sys.stdout.write("{0}:".format(i))
             for xx in vertex_list:
-
                 if xx.group == i:
-                    print(" ", end ="")
-                    print (xx.vertex_id, end="")
-            print ()
-        print("", end="\r")
+                    sys.stdout.write(" ")
+                    sys.stdout.write("{0}".format(xx.vertex_id))
+            if i < group_number:
+                sys.stdout.write("\n")
+        # for i in range(1, group_number+1):
+        #     print(i, end=":")
+        #     for xx in vertex_list:
+        #
+        #         if xx.group == i:
+        #             print(" ", end ="")
+        #             print (xx.vertex_id, end="")
+        #     print ()
+
 
 if __name__ == '__main__':
 
