@@ -17,18 +17,12 @@ class ShortestPath:
                 group_number = group_number + 1
             while len(queue) > 0:
                 current = queue.pop(0)
-                #if current.is_undiscovered():
                 current.group = group_number
-                #vertex_list[current.vertex_id].set_discovered()
                 for neighbor in vertex_list[current.vertex_id].adj_list:
-
                     if neighbor.is_undiscovered():
                         neighbor.set_discovered()
                         queue.append(neighbor)
                         neighbor.group = group_number
-
-                            # 1 - 5 6
-                            # 2 - 3, 4,5
 
     #
     # group_number = 0

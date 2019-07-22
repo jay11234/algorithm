@@ -10,7 +10,7 @@ class Dictionary:
 
 
     def make_dic(self):
-        dictionary =list()
+        dictionary = list()
         with open('dictionary.txt') as dic:
             for line in dic:
                 dictionary.append(line.split('\n')[0])
@@ -22,7 +22,6 @@ class Dictionary:
 
 def print_anagram(prefix, word, dict):
     if len(word) == 1:
-        #dict = enchant.Dict("en_US")
         output = prefix+''.join(word)
         output.lower()
 
